@@ -1,6 +1,6 @@
 <?php
 
-namespace Asantibanez\LivewireCalendar;
+namespace Rabol\LivewireCalendar;
 
 use Carbon\Carbon;
 use Exception;
@@ -170,7 +170,7 @@ class LivewireCalendar extends Component
     /**
      * @throws Exception
      */
-    public function monthGrid()
+    public function monthGrid(): Collection
     {
         $firstDayOfGrid = $this->gridStartsAt;
         $lastDayOfGrid = $this->gridEndsAt;
@@ -196,6 +196,37 @@ class LivewireCalendar extends Component
         }
 
         return $monthGrid;
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function weekGrid(): Collection
+    {
+        $firstDayOfGrid = $this->gridStartsAt;
+        $lastDayOfGrid = $this->gridEndsAt;
+
+        $numbersOfWeeks = $lastDayOfGrid->diffInWeeks($firstDayOfGrid) + 1;
+        $days = $lastDayOfGrid->diffInDays($firstDayOfGrid) + 1;
+
+        if ($days != 7) {
+            throw new Exception("Livewire Calendar not correctly configured. Check initial inputs.");
+        }
+
+        $weekGrid = collect();
+        $currentDay = $firstDayOfGrid->clone();
+
+        while(!$currentDay->greaterThan($lastDayOfGrid)) {
+            $weekGrid->push($currentDay->clone());
+            $currentDay->addDay();
+        }
+
+        //$monthGrid = $monthGrid->chunk(7);
+        //if ($numbersOfWeeks != $monthGrid->count()) {
+        //    throw new Exception("Livewire Calendar calculated wrong number of weeks. Sorry :(");
+        //}
+
+        return $weekGrid;
     }
 
     public function events() : Collection
