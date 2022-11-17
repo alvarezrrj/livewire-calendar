@@ -4,7 +4,6 @@ namespace Rabol\LivewireCalendar;
 
 use Illuminate\Support\Facades\Facade;
 
-
 class LivewireCalendarFacade extends Facade
 {
     /**
@@ -12,7 +11,7 @@ class LivewireCalendarFacade extends Facade
      *
      * @return string
      */
-    protected static function getFacadeAccessor()
+    protected static function getFacadeAccessor(): string
     {
         return 'livewire-calendar';
     }

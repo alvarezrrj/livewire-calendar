@@ -1,5 +1,7 @@
 # Livewire Calendar
 
+# This package is based on the great work of asantibanez/livewire-calendar
+
 This package allows you to build a Livewire monthly calendar grid to show events for each day. Events can be loaded 
 from within the component and will be presented on each day depending on the date of the event.
 

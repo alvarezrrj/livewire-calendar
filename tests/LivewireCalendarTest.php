@@ -8,7 +8,7 @@ use Livewire\Testing\TestableLivewire;
 
 class LivewireCalendarTest extends TestCase
 {
-    private function createComponent($parameters = []) : TestableLivewire
+    private function createComponent($parameters = []): TestableLivewire
     {
         return app(LivewireManager::class)->test(LivewireCalendar::class, $parameters);
     }
