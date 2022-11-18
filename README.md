@@ -133,6 +133,15 @@ starting month, you can set the `year` and `month` props.
 />
  ``` 
 
+Week view with locale
+```blade
+ <livewire:appointments-calendar
+    initial-calendar-mode="1"
+    week-starts-at="1"
+    week-ends-at="0"
+    initialLocale="da"
+/>
+```
 You should include scripts with `@livewireCalendarScripts` to enable drag and drop which is turned on by default.
 You must include them after `@livewireScripts`
 
